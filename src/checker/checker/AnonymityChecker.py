@@ -63,7 +63,7 @@ class AnonymityChecker(Checker):
 	
 	def title(self):
 		"""Returns the title for this checker category."""
-		return _("Ensure anonymous submission.")
+		return _("Ensure anonymous submission")
     # _de("Anonymitaet sicherstellen")
 	
 	@staticmethod

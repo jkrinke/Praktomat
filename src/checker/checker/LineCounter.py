@@ -20,12 +20,14 @@ class LineCounter(Checker):
 
 	def title(self):
 		""" Returns the title for this checker category. """
-		return "Lexikalische Statistik"
+		return _("Lexical statistics")
+    # _de("Lexikalische Statistik")
 	
 	@staticmethod
 	def description():
 		""" Returns a description for this Checker. """
-		return u"Diese Prüfung wird immer bestanden."
+		return _("This check is always passed.")
+    # _de(u"Diese Prüfung wird immer bestanden.")
 		
 	def run(self, env):
 		""" Here's the actual work.	 This runs the check in the environment ENV,
@@ -100,13 +102,22 @@ class LineCounter(Checker):
 			try:
 				# FIXME : code_lines_in_file, comment_lines_in_file
 				#		  may be 0!!
+                # FIXME: switch to formatted output.
+				# log = log + (	escape(name) + ": "
+				# 			 + `lines_in_file` + " Zeilen, davon "
+				# 			 + `code_lines_in_file` + " Code ("
+				# 			 + `code_lines_in_file*100 / lines_in_file` + "%), "
+				# 			 + `comment_lines_in_file` + " Kommentar ("
+				# 			 + `comment_lines_in_file*100 / lines_in_file` + "%), "
+				# 			 + `coco_lines_in_file` + " beides ("
+				# 			 + `coco_lines_in_file*100 / lines_in_file` + "%).<br>\n")
 				log = log + (	escape(name) + ": "
-							 + `lines_in_file` + " Zeilen, davon "
-							 + `code_lines_in_file` + " Code ("
+							 + `lines_in_file` + " lines, including "
+							 + `code_lines_in_file` + " code lines ("
 							 + `code_lines_in_file*100 / lines_in_file` + "%), "
-							 + `comment_lines_in_file` + " Kommentar ("
+							 + `comment_lines_in_file` + " comment lines ("
 							 + `comment_lines_in_file*100 / lines_in_file` + "%), "
-							 + `coco_lines_in_file` + " beides ("
+							 + `coco_lines_in_file` + " both ("
 							 + `coco_lines_in_file*100 / lines_in_file` + "%).<br>\n")
 			except ZeroDivisionError:
 				# FIXME
@@ -119,13 +130,22 @@ class LineCounter(Checker):
 		coco_lines = coco_lines + coco_lines_in_file
 
 		try:
-			log = log + ("<br>" + `files` + " Dateien, "
-						 + `lines` + " Zeilen, davon "
-						 + `code_lines` + " Code ("
+            # FIXME: switch to formatted output.
+			# log = log + ("<br>" + `files` + " Dateien, "
+			# 			 + `lines` + " Zeilen, davon "
+			# 			 + `code_lines` + " Code ("
+			# 			 + `code_lines * 100 / lines` + "%), "
+			# 			 + `comment_lines` + " Kommentar ("
+			# 			 + `comment_lines * 100 / lines` + "%), "
+			# 			 + `coco_lines` + " beides ("
+			# 			 + `coco_lines * 100 / lines` + "%).\n")
+			log = log + ("<br>" + `files` + " files, "
+						 + `lines` + " lines, including "
+						 + `code_lines` + " code lines ("
 						 + `code_lines * 100 / lines` + "%), "
-						 + `comment_lines` + " Kommentar ("
+						 + `comment_lines` + " comment lines ("
 						 + `comment_lines * 100 / lines` + "%), "
-						 + `coco_lines` + " beides ("
+						 + `coco_lines` + " both ("
 						 + `coco_lines * 100 / lines` + "%).\n")
 		except ZeroDivisionError:
 			# FIXME
