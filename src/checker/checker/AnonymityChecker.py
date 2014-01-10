@@ -63,12 +63,14 @@ class AnonymityChecker(Checker):
 	
 	def title(self):
 		"""Returns the title for this checker category."""
-		return "Anonymitaet sicherstellen"
+		return _("Ensure anonymous submission.")
+    # _de("Anonymitaet sicherstellen")
 	
 	@staticmethod
 	def description():
 		""" Returns a description for this Checker. """
-		return u"Diese Prüfung ist bestanden, wenn alle eingereichten Dateien weder Ihren Vor- noch Ihre Nachnamen enthalten."
+		return _("This check can fails if a submitted file contains your first or last name.")
+    # _de(u"Diese Prüfung ist bestanden, wenn alle eingereichten Dateien weder Ihren Vor- noch Ihre Nachnamen enthalten.")
 	
 	def run(self, env):
 		result = CheckerResult(checker=self)
