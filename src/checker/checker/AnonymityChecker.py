@@ -12,6 +12,7 @@ import fnmatch
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from checker.models import Checker, CheckerResult
 
 from django.template.defaultfilters import escape
@@ -63,13 +64,13 @@ class AnonymityChecker(Checker):
 	
 	def title(self):
 		"""Returns the title for this checker category."""
-		return _("Ensure anonymous submission")
+		return ugettext("Ensure anonymous submission")
     # _de("Anonymitaet sicherstellen")
 	
 	@staticmethod
 	def description():
 		""" Returns a description for this Checker. """
-		return _("This check can fails if a submitted file contains your first or last name.")
+		return ugettext("This check can fails if a submitted file contains your first or last name.")
     # _de(u"Diese Prüfung ist bestanden, wenn alle eingereichten Dateien weder Ihren Vor- noch Ihre Nachnamen enthalten.")
 	
 	def run(self, env):
