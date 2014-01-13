@@ -8,6 +8,7 @@ import string
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.utils.html import escape
 from checker.models import Checker, CheckerResult
 
@@ -20,13 +21,13 @@ class LineCounter(Checker):
 
 	def title(self):
 		""" Returns the title for this checker category. """
-		return _("Lexical statistics")
+		return ugettext("Lexical statistics")
     # _de("Lexikalische Statistik")
 	
 	@staticmethod
 	def description():
 		""" Returns a description for this Checker. """
-		return _("This check is always passed.")
+		return ugettext("This check is always passed.")
     # _de(u"Diese Prüfung wird immer bestanden.")
 		
 	def run(self, env):
