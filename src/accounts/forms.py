@@ -58,13 +58,8 @@ class MyRegistrationForm(UserBaseCreationForm):
 		return data
 
 	def clean_username(self):
-		username = super(MyRegistrationForm,self).clean_username()
-		try:
-			User.objects.get(username__iexact=username)
-		except User.DoesNotExist:
-			return username
-		raise forms.ValidationError(_("A user with that username already exists."))
-
+		username = self.cleaned_data["username"]
+		return username
 
 	@transaction.atomic
 	def save(self):
@@ -124,12 +119,8 @@ class AdminUserCreationForm(UserBaseCreationForm):
                 fields = "__all__"
 
 	def clean_username(self):
-		username = super(AdminUserCreationForm,self).clean_username()
-		try:
-			User.objects.get(username__iexact=username)
-		except User.DoesNotExist:
-			return username
-		raise forms.ValidationError(_("A user with that username already exists."))
+		username = self.cleaned_data["username"]
+		return username
 
 class AdminUserChangeForm(UserBaseChangeForm):
 	class Meta:
