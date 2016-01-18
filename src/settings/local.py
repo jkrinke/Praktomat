@@ -4,6 +4,9 @@
 
 from os.path import join, dirname, basename
 import re
+import logging
+
+logging.warning('Started...')
 
 SITE_NAME = 'Praktomat@UCL (2016)'
 
@@ -71,6 +74,9 @@ USEPRAKTOMATTESTER = False
 
 # Increase the maximal output size.
 TEST_MAXLOGSIZE=256
+
+# The timezone is wrongly set by the defaults.
+TIME_ZONE='Europe/London'
 
 # Finally load defaults for missing setttings.
 import defaults
